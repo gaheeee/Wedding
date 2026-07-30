@@ -34,25 +34,13 @@ export default function Cover({
       sectionRef.current.style.height = `${vh}px`;
     };
 
+    // 최초 1회만 높이 고정 — 스크롤로 주소바가 사라져도 높이가 변하지 않음
     setHeight();
-
-    // visualViewport resize 이벤트: 주소바 표시/숨김 시에도 높이 재계산
-    // (최초 로드 후에는 변하지 않도록 한 번만 적용하고 싶다면 리스너 제거 가능)
-    const viewport = window.visualViewport;
-    if (viewport) {
-      viewport.addEventListener("resize", setHeight);
-    }
 
     if (contentRef.current) {
       contentRef.current.style.opacity = "1";
       contentRef.current.style.transform = "translateY(0)";
     }
-
-    return () => {
-      if (viewport) {
-        viewport.removeEventListener("resize", setHeight);
-      }
-    };
   }, []);
 
   return (
