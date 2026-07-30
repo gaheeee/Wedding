@@ -29,13 +29,12 @@ const WEDDING_CONFIG = {
 
   // 예식장 정보
   venue: {
-    name: "OO 웨딩홀",
+    name: "아모르아트 웨딩홀",
     hall: "그랜드홀 3층",
-    address: "서울특별시 OO구 OO로 123",
-    tel: "02-1234-5678",
+    address: "충청북도 영동군 영동황간로 80",
+    tel: "043-743-2500",
     traffic: {
-      subway: "지하철 O호선 OO역 O번 출구 도보 5분",
-      bus: "OO번, OO번 버스 OO 정류장 하차",
+      car: "영동역에서 차로 5분",
       parking: "건물 내 지하주차장 이용 가능 (2시간 무료)",
     },
   },

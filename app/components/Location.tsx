@@ -8,7 +8,7 @@ interface LocationProps {
   address: string;
   tel?: string;
   trafficInfo?: {
-    subway?: string;
+    car?: string;
     bus?: string;
     parking?: string;
   };
@@ -69,8 +69,8 @@ export default function Location({ venue, hall, address, tel, trafficInfo }: Loc
 
       {trafficInfo && (
         <div className="fade-in" style={{ marginTop: "2rem", fontSize: "0.8125rem", color: "var(--color-gray)", lineHeight: 1.8 }}>
-          {trafficInfo.subway && (
-            <p>🚇 {trafficInfo.subway}</p>
+          {trafficInfo.car && (
+            <p>🚇 {trafficInfo.car}</p>
           )}
           {trafficInfo.bus && (
             <p style={{ marginTop: "4px" }}>🚌 {trafficInfo.bus}</p>
