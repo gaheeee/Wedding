@@ -98,12 +98,32 @@ export default function Gallery({ images }: GalleryProps) {
           ✕
         </button>
         {lightboxOpen && (
-          <img
-            className="lightbox__image"
-            src={images[lightboxIndex]}
-            alt={`웨딩 사진 ${lightboxIndex + 1}`}
-            onClick={(e) => e.stopPropagation()}
-          />
+          <>
+            <button
+              className="lightbox__nav lightbox__nav--prev"
+              onClick={(e) => { e.stopPropagation(); goToPrev(); }}
+              aria-label="이전 사진"
+            >
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <img
+              className="lightbox__image"
+              src={images[lightboxIndex]}
+              alt={`웨딩 사진 ${lightboxIndex + 1}`}
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button
+              className="lightbox__nav lightbox__nav--next"
+              onClick={(e) => { e.stopPropagation(); goToNext(); }}
+              aria-label="다음 사진"
+            >
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </>
         )}
       </div>
     </>
