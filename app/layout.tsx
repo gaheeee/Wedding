@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Serif_KR, Cormorant_Garamond, Gowun_Batang } from "next/font/google";
 import "./globals.css";
 
@@ -23,15 +23,16 @@ const gowun = Gowun_Batang({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 export const metadata: Metadata = {
   title: "건혁 ♥ 현 결혼합니다",
   description: "두 사람의 새로운 시작을 함께 축하해 주세요.",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
   openGraph: {
     title: "건혁 ♥ 현 결혼합니다",
     description: "두 사람의 새로운 시작을 함께 축하해 주세요.",

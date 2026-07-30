@@ -60,6 +60,7 @@ body {
   line-height: 1.8;
   overflow-x: hidden;
   min-height: 100dvh;
+  touch-action: manipulation;
 }
 
 img {
@@ -172,7 +173,7 @@ button {
   z-index: 2;
   text-align: center;
   color: var(--color-white);
-  padding: var(--spacing-xl) var(--spacing-md) var(--spacing-2xl);
+  padding: var(--spacing-xl) var(--spacing-md) 8rem;
   width: 100%;
 }
 
@@ -203,7 +204,7 @@ button {
 }
 
 .cover__scroll-indicator {
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-md);
   animation: scrollBounce 2s ease-in-out infinite;
 }
 
