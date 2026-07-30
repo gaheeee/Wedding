@@ -42,7 +42,14 @@ export default function Greeting({
       <div className="section__ornament">✦ ✦ ✦</div>
       <h2 className="section__title fade-in">Invitation</h2>
 
-      <p className="greeting__message fade-in">{message}</p>
+      <p className="greeting__message fade-in">
+        {message.split("\n").map((line, i) => (
+          <span key={i}>
+            {i > 0 && <br />}
+            {line}
+          </span>
+        ))}
+      </p>
 
       <div className="greeting__parents fade-in">
         <div className="greeting__parents-side">
