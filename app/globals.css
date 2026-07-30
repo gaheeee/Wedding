@@ -195,7 +195,7 @@ button {
 }
 
 .cover__date {
-  font-family: var(--font-display);
+  font-family: var(--font-body-kr);
   font-size: 0.8125rem;
   font-weight: 300;
   letter-spacing: 0.3em;
@@ -350,7 +350,7 @@ button {
 }
 
 .countdown__number {
-  font-family: var(--font-display);
+  font-family: var(--font-body-kr);
   font-size: 1.75rem;
   font-weight: 400;
   color: var(--color-charcoal);
