@@ -20,8 +20,15 @@ export default function Cover({
   coverImageSrc,
 }: CoverProps) {
   const contentRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    // 카카오톡 인앱 브라우저에서 스크롤 시 vh가 변하는 문제 방지:
+    // 최초 로드 시 높이를 px로 고정
+    if (sectionRef.current) {
+      sectionRef.current.style.height = `${window.innerHeight}px`;
+    }
+
     if (contentRef.current) {
       contentRef.current.style.opacity = "1";
       contentRef.current.style.transform = "translateY(0)";
@@ -29,7 +36,7 @@ export default function Cover({
   }, []);
 
   return (
-    <section className="cover" id="cover">
+    <section className="cover" id="cover" ref={sectionRef}>
       <div className="cover__image-wrapper">
         <img src={coverImageSrc} alt="웨딩 메인 사진" />
       </div>
