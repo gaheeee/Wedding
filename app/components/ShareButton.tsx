@@ -6,7 +6,7 @@ export default function ShareButton() {
     // 현재는 Web Share API fallback
     if (navigator.share) {
       navigator.share({
-        title: "건혁 ♥ 양현 결혼합니다",
+        title: "건혁 ♥ 현 결혼합니다",
         text: "두 사람의 새로운 시작을 함께 축하해 주세요.",
         url: window.location.href,
       }).catch(() => {});
