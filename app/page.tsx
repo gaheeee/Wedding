@@ -42,11 +42,11 @@ const WEDDING_CONFIG = {
   // 계좌 정보
   groomAccounts: [
     { bank: "국민은행", number: "123-456-789012", holder: "박건혁" },
-    { bank: "신한은행", number: "123-456-789012", holder: "박OO (부)" },
+    { bank: "신한은행", number: "123-456-789012", holder: "김OO (모)" },
   ],
   brideAccounts: [
     { bank: "우리은행", number: "123-456-789012", holder: "양현" },
-    { bank: "하나은행", number: "123-456-789012", holder: "양OO (부)" },
+    { bank: "하나은행", number: "123-456-789012", holder: "김연옥 (모)" },
   ],
 
   // 갤러리 이미지 (public/images 폴더에 넣을 것)
