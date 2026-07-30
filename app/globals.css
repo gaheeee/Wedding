@@ -3,8 +3,6 @@
    Black & White Elegant Theme
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+KR:wght@200;300;400;500;600&family=Gowun+Batang:wght@400;700&display=swap');
-
 /* --- CSS Custom Properties (Design Tokens) --- */
 :root {
   /* Colors — Black & White Palette */
@@ -21,11 +19,6 @@
   /* Accent — subtle warm tone for highlights */
   --color-accent: #c9b99a;
   --color-accent-light: #e0d5c0;
-
-  /* Typography */
-  --font-display: 'Cormorant Garamond', serif;
-  --font-body-kr: 'Noto Serif KR', serif;
-  --font-body-kr-alt: 'Gowun Batang', serif;
 
   /* Spacing */
   --spacing-xs: 0.5rem;

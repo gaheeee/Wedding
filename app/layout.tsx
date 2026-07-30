@@ -1,5 +1,27 @@
 import type { Metadata } from "next";
+import { Noto_Serif_KR, Cormorant_Garamond, Gowun_Batang } from "next/font/google";
 import "./globals.css";
+
+const notoSerifKr = Noto_Serif_KR({
+  weight: ["200", "300", "400", "500", "600"],
+  subsets: ["latin"],
+  variable: "--font-body-kr",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  weight: ["300", "400", "500", "600"],
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const gowun = Gowun_Batang({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-body-kr-alt",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "건혁 ♥ 현 결혼합니다",
@@ -21,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>
+      <body className={`${notoSerifKr.variable} ${cormorant.variable} ${gowun.variable}`}>
         {children}
       </body>
     </html>
