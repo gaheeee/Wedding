@@ -142,7 +142,7 @@ button {
 .cover {
   position: relative;
   width: 100%;
-  min-height: 100dvh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -167,12 +167,10 @@ button {
 .cover__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 30%,
-    rgba(0, 0, 0, 0.3) 60%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
+  background: linear-gradient(to bottom,
+      transparent 30%,
+      rgba(0, 0, 0, 0.3) 60%,
+      rgba(0, 0, 0, 0.7) 100%);
   z-index: 1;
 }
 
@@ -224,8 +222,15 @@ button {
 }
 
 @keyframes scrollBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
 }
 
 /* --- Greeting Section --- */
@@ -451,15 +456,15 @@ button {
 
 .lightbox__nav:hover {
   opacity: 1;
-  background: linear-gradient(to right, rgba(0,0,0,0.2), transparent);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.2), transparent);
 }
 
 .lightbox__nav--next:hover {
-  background: linear-gradient(to left, rgba(0,0,0,0.2), transparent);
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent);
 }
 
 .lightbox__nav svg {
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .lightbox__nav--prev {
