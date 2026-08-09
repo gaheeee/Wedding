@@ -3,8 +3,16 @@
    Black & White Elegant Theme
    ============================================= */
 
+/* Import Pretendard Font */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+
 /* --- CSS Custom Properties (Design Tokens) --- */
 :root {
+  /* Fonts */
+  --font-pretendard: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  --font-body-kr: var(--font-pretendard);
+  --font-body-kr-alt: var(--font-pretendard);
+
   /* Colors — Black & White Palette */
   --color-black: #0a0a0a;
   --color-charcoal: #1a1a1a;
@@ -54,12 +62,14 @@ html {
 }
 
 body {
-  font-family: var(--font-body-kr);
+  font-family: var(--font-pretendard);
+  --font-body-kr: var(--font-pretendard);
+  --font-body-kr-alt: var(--font-pretendard);
   color: var(--color-charcoal);
   background-color: var(--color-cream);
   line-height: 1.8;
   overflow-x: hidden;
-  min-height: 100dvh;
+  min-height: 100vh;
   touch-action: manipulation;
 }
 
@@ -86,7 +96,7 @@ button {
   max-width: var(--max-width);
   margin: 0 auto;
   background-color: var(--color-white);
-  min-height: 100dvh;
+  min-height: 100vh;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.06);
   position: relative;
 }
@@ -107,7 +117,7 @@ button {
 }
 
 .section__title {
-  font-family: var(--font-display);
+  font-family: var(--font-pretendard);
   font-size: 1.125rem;
   font-weight: 300;
   letter-spacing: 0.25em;
@@ -136,7 +146,10 @@ button {
 .cover {
   position: relative;
   width: 100%;
-  min-height: 100svh;
+  /* 동적 단위(svh/dvh) 금지 — 주소바가 접히면 값이 변해 이미지가 확대됩니다.
+     vh는 정적 단위라 주소바 상태와 무관하게 고정되며,
+     JS가 마운트 시 실제 px 값으로 한 번 더 잠급니다. */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -147,7 +160,11 @@ button {
 
 .cover__image-wrapper {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* 섹션 높이와 분리해 고정 — object-fit: cover가 재계산되지 않습니다. */
+  height: var(--cover-media-h, 100vh);
   z-index: 0;
 }
 
@@ -160,7 +177,10 @@ button {
 
 .cover__overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--cover-media-h, 100vh);
   background: linear-gradient(to bottom,
       transparent 30%,
       rgba(0, 0, 0, 0.3) 60%,
@@ -187,7 +207,7 @@ button {
 }
 
 .cover__names-kr {
-  font-family: var(--font-body-kr);
+  font-family: "Noto Serif KR", serif;
   font-size: 0.9375rem;
   font-weight: 200;
   letter-spacing: 0.3em;
@@ -196,7 +216,7 @@ button {
 }
 
 .cover__date {
-  font-family: var(--font-body-kr);
+  font-family: "Noto Serif KR", serif;
   font-size: 0.8125rem;
   font-weight: 300;
   letter-spacing: 0.3em;
@@ -234,7 +254,7 @@ button {
 }
 
 .greeting__message {
-  font-family: var(--font-body-kr-alt);
+  font-family: var(--font-pretendard);
   font-size: 0.9375rem;
   font-weight: 400;
   line-height: 2.2;
@@ -270,7 +290,7 @@ button {
 }
 
 .calendar__date-display {
-  font-family: var(--font-display);
+  font-family: var(--font-pretendard);
   font-size: 2.5rem;
   font-weight: 300;
   letter-spacing: 0.1em;
@@ -351,7 +371,7 @@ button {
 }
 
 .countdown__number {
-  font-family: var(--font-body-kr);
+  font-family: var(--font-pretendard);
   font-size: 1.75rem;
   font-weight: 400;
   color: var(--color-charcoal);
@@ -476,7 +496,7 @@ button {
 }
 
 .location__venue {
-  font-family: var(--font-body-kr);
+  font-family: var(--font-pretendard);
   font-size: 1.125rem;
   font-weight: 500;
   color: var(--color-charcoal);
@@ -520,7 +540,7 @@ button {
   border-radius: 100px;
   color: var(--color-dark-gray);
   transition: all var(--transition-base);
-  font-family: var(--font-body-kr);
+  font-family: var(--font-pretendard);
 }
 
 .location__nav-btn:hover {
@@ -545,7 +565,7 @@ button {
   font-size: 0.875rem;
   color: var(--color-dark-gray);
   transition: background-color var(--transition-base);
-  font-family: var(--font-body-kr);
+  font-family: var(--font-pretendard);
 }
 
 .account__toggle:hover {
@@ -598,7 +618,7 @@ button {
   border-radius: 100px;
   color: var(--color-gray);
   transition: all var(--transition-base);
-  font-family: var(--font-body-kr);
+  font-family: var(--font-pretendard);
 }
 
 .account__copy-btn:hover {
@@ -619,7 +639,7 @@ button {
   font-size: 0.875rem;
   border: 1px solid var(--color-silver);
   border-radius: 8px;
-  font-family: var(--font-body-kr);
+  font-family: var(--font-pretendard);
   color: var(--color-dark-gray);
   background-color: var(--color-white);
   transition: border-color var(--transition-base);
@@ -645,7 +665,7 @@ button {
   font-size: 0.875rem;
   border-radius: 8px;
   transition: background-color var(--transition-base);
-  font-family: var(--font-body-kr);
+  font-family: var(--font-pretendard);
   letter-spacing: 0.1em;
 }
 
@@ -701,7 +721,7 @@ button {
   font-size: 0.875rem;
   border-radius: 100px;
   transition: all var(--transition-base);
-  font-family: var(--font-body-kr);
+  font-family: var(--font-pretendard);
   letter-spacing: 0.05em;
 }
 
@@ -720,7 +740,7 @@ button {
 }
 
 .footer__text {
-  font-family: var(--font-display);
+  font-family: var(--font-pretendard);
   font-size: 0.75rem;
   letter-spacing: 0.2em;
 }

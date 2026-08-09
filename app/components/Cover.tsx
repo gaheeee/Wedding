@@ -21,26 +21,47 @@ export default function Cover({
 }: CoverProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const lockedWidth = useRef(0);
 
   useEffect(() => {
-    // 각 모바일 디바이스의 실제 뷰포트 높이를 감지하여 px로 고정.
-    // visualViewport API는 주소바/툴바를 제외한 실제 보이는 영역을 반환하므로
-    // 카카오톡 인앱, Safari, Chrome 등 모든 브라우저에서 정확하게 동작합니다.
-    const setHeight = () => {
-      if (!sectionRef.current) return;
-      const vh = window.visualViewport
-        ? window.visualViewport.height
-        : window.innerHeight;
-      sectionRef.current.style.height = `${vh}px`;
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const lockHeight = () => {
+      // 주소바가 보이는 상태(가장 작은 뷰포트)를 기준으로 px 고정
+      const vh = window.visualViewport?.height ?? window.innerHeight;
+
+      // 섹션 = 처음 보이는 영역에 정확히 맞춤 (문구가 잘리지 않음)
+      section.style.height = `${vh}px`;
+
+      // 이미지/오버레이는 여유분을 더해 크기를 고정.
+      // 주소바가 사라져 화면이 커져도 이미지 크기는 그대로이고,
+      // 아래쪽에 흰 여백이 드러나지 않습니다.
+      section.style.setProperty("--cover-media-h", `${vh + 160}px`);
+
+      lockedWidth.current = window.innerWidth;
     };
 
-    // 최초 1회만 높이 고정 — 스크롤로 주소바가 사라져도 높이가 변하지 않음
-    setHeight();
+    lockHeight();
+
+    // 주소바 노출/숨김(높이만 변함)은 무시하고,
+    // 화면 회전처럼 "너비"가 바뀔 때만 다시 계산합니다.
+    const handleResize = () => {
+      if (window.innerWidth !== lockedWidth.current) lockHeight();
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleResize);
 
     if (contentRef.current) {
       contentRef.current.style.opacity = "1";
       contentRef.current.style.transform = "translateY(0)";
     }
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleResize);
+    };
   }, []);
 
   return (
