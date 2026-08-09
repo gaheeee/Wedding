@@ -291,35 +291,35 @@ button {
 
 .calendar__date-display {
   font-family: var(--font-pretendard);
-  font-size: 2.5rem;
+  font-size: 1.875rem;
   font-weight: 300;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--color-charcoal);
   margin-bottom: var(--spacing-xs);
 }
 
 .calendar__day-info {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: var(--color-gray);
-  letter-spacing: 0.2em;
-  margin-bottom: var(--spacing-lg);
+  letter-spacing: 0.15em;
+  margin-bottom: var(--spacing-md);
 }
 
 .calendar__grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 2px;
-  max-width: 320px;
-  margin: 0 auto var(--spacing-lg);
-  font-size: 0.8125rem;
+  max-width: 260px;
+  margin: 0 auto var(--spacing-md);
+  font-size: 0.75rem;
 }
 
 .calendar__grid-header {
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 500;
   color: var(--color-light-gray);
   letter-spacing: 0.1em;
-  padding: var(--spacing-xs) 0;
+  padding: 4px 0;
 }
 
 .calendar__grid-header--sun {
@@ -331,7 +331,7 @@ button {
 }
 
 .calendar__grid-day {
-  padding: 6px 0;
+  padding: 4px 0;
   color: var(--color-gray);
   border-radius: 50%;
   aspect-ratio: 1;
@@ -363,7 +363,7 @@ button {
   display: flex;
   justify-content: center;
   gap: var(--spacing-md);
-  margin-top: var(--spacing-md);
+  margin-top: var(--spacing-sm);
 }
 
 .countdown__item {
@@ -372,14 +372,14 @@ button {
 
 .countdown__number {
   font-family: var(--font-pretendard);
-  font-size: 1.75rem;
+  font-size: 1.375rem;
   font-weight: 400;
   color: var(--color-charcoal);
   display: block;
 }
 
 .countdown__label {
-  font-size: 0.625rem;
+  font-size: 0.5625rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-light-gray);
