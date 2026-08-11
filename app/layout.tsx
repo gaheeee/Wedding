@@ -31,10 +31,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "건혁 ♥ 현 결혼합니다",
+  title: "건혁 ♥ 현 결혼합니다.",
   description: "두 사람의 새로운 시작을 함께 축하해 주세요.",
   openGraph: {
-    title: "건혁 ♥ 현 결혼합니다",
+    title: "건혁 ♥ 현 결혼합니다.",
     description: "두 사람의 새로운 시작을 함께 축하해 주세요.",
     type: "website",
     // TODO: Vercel 배포 후 실제 URL 및 OG 이미지로 교체

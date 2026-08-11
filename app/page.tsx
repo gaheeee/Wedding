@@ -6,6 +6,8 @@ import Location from "./components/Location";
 import AccountSection from "./components/AccountSection";
 import Guestbook from "./components/Guestbook";
 import ShareButton from "./components/ShareButton";
+import SectionDivider from "./components/SectionDivider";
+import PolaroidSection from "./components/PolaroidSection";
 
 // ============================================
 // 📝 이곳에서 실제 정보를 수정하세요
@@ -76,6 +78,7 @@ export default function Home() {
         coverImageSrc={WEDDING_CONFIG.coverImage}
       />
 
+
       {/* 초대의 글 */}
       <Greeting
         message={WEDDING_CONFIG.greetingMessage}
@@ -85,14 +88,22 @@ export default function Home() {
         brideName={WEDDING_CONFIG.bride.nameKr}
       />
 
-      {/* 구분선 */}
-      <div className="section__divider" />
+      <SectionDivider />
 
       {/* 캘린더 & D-Day */}
       <CalendarSection weddingDate={WEDDING_CONFIG.weddingDate} />
 
+      <SectionDivider />
+
+      {/* 폴라로이드 섹션 */}
+      <PolaroidSection />
+
+      <SectionDivider />
+
       {/* 갤러리 */}
       <Gallery images={WEDDING_CONFIG.galleryImages} />
+
+      <SectionDivider />
 
       {/* 오시는 길 */}
       <Location
@@ -103,17 +114,24 @@ export default function Home() {
         trafficInfo={WEDDING_CONFIG.venue.traffic}
       />
 
+      <SectionDivider />
+
       {/* 마음 전하실 곳 */}
       <AccountSection
         groomAccounts={WEDDING_CONFIG.groomAccounts}
         brideAccounts={WEDDING_CONFIG.brideAccounts}
       />
 
+      <SectionDivider />
+
       {/* 방명록 */}
       <Guestbook />
 
+      <SectionDivider />
+
       {/* 공유하기 */}
       <ShareButton />
+
 
       {/* 푸터 */}
       <footer className="footer">

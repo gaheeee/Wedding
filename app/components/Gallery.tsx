@@ -72,18 +72,30 @@ export default function Gallery({ images }: GalleryProps) {
     }
   };
 
+  const maxDisplay = 6;
+  const visibleImages = images.slice(0, maxDisplay);
+  const remainingCount = images.length - (maxDisplay - 1);
+
   return (
     <>
-      <section className="section gallery" id="gallery" ref={sectionRef}>
-        <h2 className="section__title fade-in" style={{ padding: "0 1.5rem" }}>
+      <section className="section gallery" id="gallery" ref={sectionRef} style={{ padding: "2rem" }}>
+        {/* <h2 className="section__title fade-in" style={{ padding: "0 1.5rem" }}>
           Gallery
-        </h2>
+        </h2> */}
         <div className="gallery__grid fade-in">
-          {images.map((src, i) => (
-            <div className="gallery__item" key={i} onClick={() => openLightbox(i)}>
-              <img src={src} alt={`웨딩 사진 ${i + 1}`} loading="lazy" />
-            </div>
-          ))}
+          {visibleImages.map((src, i) => {
+            const isLast = i === maxDisplay - 1 && images.length >= maxDisplay;
+            return (
+              <div className="gallery__item" key={i} onClick={() => openLightbox(i)}>
+                <img src={src} alt={`웨딩 사진 ${i + 1}`} loading="lazy" />
+                {isLast && (
+                  <div className="gallery__more-overlay">
+                    + More
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
 
