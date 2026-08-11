@@ -91,9 +91,9 @@ export default function Home() {
       <SectionDivider />
 
       {/* 캘린더 & D-Day */}
-      <CalendarSection weddingDate={WEDDING_CONFIG.weddingDate} />
+      {/* <CalendarSection weddingDate={WEDDING_CONFIG.weddingDate} />
 
-      <SectionDivider />
+      <SectionDivider /> */}
 
       {/* 폴라로이드 섹션 */}
       <PolaroidSection />

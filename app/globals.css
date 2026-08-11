@@ -414,7 +414,8 @@ button {
 }
 
 .polaroid-item {
-  width: 276px;
+  width: 90%;
+  max-width: 370px;
   position: relative;
   transition: transform var(--transition-base);
 }
@@ -425,7 +426,7 @@ button {
 
 .polaroid-card {
   position: relative;
-  width: 276px;
+  width: 100%;
   aspect-ratio: 556 / 436;
 }
 
