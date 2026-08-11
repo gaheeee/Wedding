@@ -278,7 +278,7 @@ button {
 .greeting__parents {
   display: flex;
   justify-content: center;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-md);
   font-size: 0.875rem;
   color: var(--color-charcoal);
   line-height: 1.8;

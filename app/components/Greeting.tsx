@@ -71,7 +71,7 @@ export default function Greeting({
               />
               {groomParents.father} · {groomParents.mother}
               <span style={{ fontSize: "0.8125rem", color: "var(--color-gray)" }}>
-                {" "}의 아들{" "}
+                {" "}의 아들{" "}<br/>
               </span>
               <span style={{ color: "var(--color-charcoal)", fontWeight: 500 }}>
                 {groomName}
@@ -83,7 +83,7 @@ export default function Greeting({
             <div>
               {brideParents.father} · {brideParents.mother}
               <span style={{ fontSize: "0.8125rem", color: "var(--color-gray)" }}>
-                {" "}의 딸{" "}
+                {" "}의 딸{" "}<br/>
               </span>
               <span style={{ color: "var(--color-charcoal)", fontWeight: 500 }}>
                 {brideName}
