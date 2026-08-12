@@ -39,24 +39,48 @@ export default function Greeting({
     return () => observer.disconnect();
   }, []);
 
+  const formattedBrideName = brideName === "현" ? "현" : brideName;
+
   return (
     <section className="section greeting" id="greeting" ref={sectionRef}>
-      <div className="greeting__content">
-        <div className="section__ornament">✦ ✦ ✦</div>
-        {/* <h2 className="section__title fade-in">Invitation</h2> */}
+      <div className="greeting__content fade-in">
+        {/* 상단 기호 장식 */}
+        <div className="greeting__symbol">+ ° ⊹ *</div>
 
-        <p className="greeting__message fade-in">
-          {message.split("\n").map((line, i) => (
-            <span key={i}>
-              {i > 0 && <br />}
-              {line}
-            </span>
+        {/* 신랑 · 신부 이름 */}
+        <h2 className="greeting__header-names">
+          {groomName} · {formattedBrideName}
+        </h2>
+
+        {/* 상단 하늘색 점선 */}
+        <div className="greeting__dotted-line" />
+
+        {/* 초대의 글 본문 */}
+        <div className="greeting__message">
+          {message.split("\n\n").map((paragraph, pIdx) => (
+            <p key={pIdx} className="greeting__paragraph">
+              {paragraph.split("\n").map((line, lIdx) => (
+                <span key={lIdx}>
+                  {lIdx > 0 && <br />}
+                  {line}
+                </span>
+              ))}
+            </p>
           ))}
-        </p>
+        </div>
 
-        <div className="greeting__parents fade-in">
+        {/* 하단 하늘색 점선 */}
+        <div className="greeting__dotted-line" />
+
+        {/* 일시 및 장소 */}
+        <div className="greeting__date-venue">
+          <p>2026.11.07 오후 1시</p>
+          <p>아모르아트웨딩홀</p>
+        </div>
+
+        {/* 양가 부모님 정보 */}
+        {/* <div className="greeting__parents">
           <div className="greeting__parents-side">
-            {/* <div className="greeting__parents-label">신랑측</div> */}
             <div>
               <Image
                 src={deceasedFlower}
@@ -79,7 +103,6 @@ export default function Greeting({
             </div>
           </div>
           <div className="greeting__parents-side">
-            {/* <div className="greeting__parents-label">신부측</div> */}
             <div>
               {brideParents.father} · {brideParents.mother}
               <span style={{ fontSize: "0.8125rem", color: "var(--color-gray)" }}>
@@ -90,7 +113,7 @@ export default function Greeting({
               </span>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

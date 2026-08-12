@@ -261,18 +261,66 @@ button {
 
 .greeting__content {
   background-color: var(--color-white);
-  padding: var(--spacing-lg) var(--spacing-md);
+  padding: 2.25rem var(--spacing-md);
   color: var(--color-charcoal);
+  border-radius: 4px;
+}
+
+.greeting__symbol {
+  font-family: var(--font-pretendard);
+  font-size: 0.875rem;
+  letter-spacing: 0.3em;
+  color: #889bb0;
+  margin-bottom: 0.75rem;
+}
+
+.greeting__header-names {
+  font-family: var(--font-pretendard);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--color-charcoal);
+  margin-bottom: 1.25rem;
+}
+
+.greeting__dotted-line {
+  width: 90%;
+  height: 1.5px;
+  margin: 1rem auto;
+  background-image: repeating-linear-gradient(
+    to right,
+    #b8d7ff 0px,
+    #b8d7ff 4px,
+    transparent 4px,
+    transparent 7px
+  );
 }
 
 .greeting__message {
   font-family: var(--font-pretendard);
   font-size: 0.9375rem;
   font-weight: 400;
-  line-height: 2.2;
+  line-height: 2.1;
   color: var(--color-charcoal);
-  margin-bottom: var(--spacing-xl);
   word-break: keep-all;
+}
+
+.greeting__paragraph {
+  margin-bottom: 1.25rem;
+}
+
+.greeting__paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.greeting__date-venue {
+  font-family: var(--font-pretendard);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--color-charcoal);
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .greeting__parents {
@@ -282,6 +330,9 @@ button {
   font-size: 0.875rem;
   color: var(--color-charcoal);
   line-height: 1.8;
+  border-top: 1px dashed var(--color-silver);
+  padding-top: 1.25rem;
+  margin-top: 1rem;
 }
 
 .greeting__parents-side {
