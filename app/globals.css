@@ -263,7 +263,6 @@ button {
   background-color: var(--color-white);
   padding: 2.25rem var(--spacing-md);
   color: var(--color-charcoal);
-  border-radius: 4px;
 }
 
 .greeting__symbol {
@@ -287,13 +286,11 @@ button {
   width: 90%;
   height: 1.5px;
   margin: 1rem auto;
-  background-image: repeating-linear-gradient(
-    to right,
-    #b8d7ff 0px,
-    #b8d7ff 4px,
-    transparent 4px,
-    transparent 7px
-  );
+  background-image: repeating-linear-gradient(to right,
+      #b8d7ff 0px,
+      #b8d7ff 4px,
+      transparent 4px,
+      transparent 7px);
 }
 
 .greeting__message {
@@ -493,7 +490,7 @@ button {
 
 .polaroid-card__photo-container {
   position: absolute;
-  top: 5.8%;
+  top: 8%;
   left: 3.9%;
   width: 92.2%;
   height: 73.3%;
@@ -505,7 +502,7 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  aspect-ratio: 254.47 / 158.64;
+  aspect-ratio: 254.47 / 180.64;
 }
 
 /* --- Gallery Section --- */
@@ -633,9 +630,15 @@ button {
 }
 
 /* --- Location Section --- */
+.location__content {
+  background-color: var(--color-white);
+  padding: 2.25rem var(--spacing-md);
+  color: var(--color-charcoal);
+}
+
 .location__info {
   text-align: center;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
 }
 
 .location__venue {
@@ -652,18 +655,36 @@ button {
   line-height: 1.6;
 }
 
-.location__map-placeholder {
+.location__map-container {
   width: 100%;
-  height: 250px;
-  background-color: var(--color-off-white);
+  margin-bottom: var(--spacing-sm);
+  position: relative;
+}
+
+.location__map-fallback {
+  width: 100%;
+  height: 190px;
+  background-color: #f7f9fb;
   border-radius: 8px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--color-light-gray);
-  font-size: 0.875rem;
-  margin-bottom: var(--spacing-lg);
   border: 1px solid var(--color-silver);
+  padding: 20px;
+  text-align: center;
+}
+
+.location__nav-btn--kakao {
+  background-color: #fee500;
+  color: #191919 !important;
+  border-color: #fee500 !important;
+  font-weight: 500;
+}
+
+.location__nav-btn--kakao:hover {
+  background-color: #fada00 !important;
+  border-color: #fada00 !important;
 }
 
 .location__nav-buttons {
@@ -677,8 +698,8 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 20px;
-  font-size: 0.8125rem;
+  padding: 10px 16px;
+  font-size: 0.7rem;
   border: 1px solid var(--color-silver);
   border-radius: 100px;
   color: var(--color-dark-gray);

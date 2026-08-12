@@ -34,6 +34,8 @@ const WEDDING_CONFIG = {
     name: "아모르아트 웨딩홀",
     hall: "그랜드홀 3층",
     address: "충청북도 영동군 영동황간로 80",
+    lat: 36.1730596,
+    lng: 127.7766861,
     tel: "043-743-2500",
     traffic: {
       car: "영동역에서 차로 5분",
@@ -112,6 +114,8 @@ export default function Home() {
         venue={WEDDING_CONFIG.venue.name}
         hall={WEDDING_CONFIG.venue.hall}
         address={WEDDING_CONFIG.venue.address}
+        lat={WEDDING_CONFIG.venue.lat}
+        lng={WEDDING_CONFIG.venue.lng}
         tel={WEDDING_CONFIG.venue.tel}
         trafficInfo={WEDDING_CONFIG.venue.traffic}
       />
