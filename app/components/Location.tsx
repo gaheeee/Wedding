@@ -66,16 +66,16 @@ export default function Location({
           try {
             if (!mapElementRef.current) return;
             const container = mapElementRef.current;
+            const center = new window.kakao.maps.LatLng(lat, lng);
             const options = {
-              center: new window.kakao.maps.LatLng(lat, lng),
+              center,
               level: 3,
             };
 
             const map = new window.kakao.maps.Map(container, options);
 
-            const markerPosition = new window.kakao.maps.LatLng(lat, lng);
             const marker = new window.kakao.maps.Marker({
-              position: markerPosition,
+              position: center,
             });
             marker.setMap(map);
 
@@ -87,13 +87,18 @@ export default function Location({
             `;
 
             const customOverlay = new window.kakao.maps.CustomOverlay({
-              position: markerPosition,
+              position: center,
               content: overlayContent,
               yAnchor: 2.1,
             });
             customOverlay.setMap(map);
 
+            // 지도를 보이게 한 뒤 relayout으로 크기 재계산 & 중심 재설정
             setMapLoaded(true);
+            setTimeout(() => {
+              map.relayout();
+              map.setCenter(center);
+            }, 0);
           } catch (e) {
             console.error("Kakao Map init error:", e);
           }
