@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
+import { openKakaoNavi, openTMap, openNaverMap } from "@/utils/navigation";
 
 interface LocationProps {
   venue: string;
@@ -15,12 +16,6 @@ interface LocationProps {
     bus?: string;
     parking?: string;
   };
-}
-
-declare global {
-  interface Window {
-    kakao?: any;
-  }
 }
 
 export default function Location({
@@ -57,6 +52,34 @@ export default function Location({
     return () => observer.disconnect();
   }, []);
 
+  // Kakao JS SDK 초기화
+  useEffect(() => {
+    if (!kakaoAppKey) return;
+
+    const initKakaoSDK = () => {
+      if (window.Kakao && !window.Kakao.isInitialized()) {
+        try {
+          window.Kakao.init(kakaoAppKey);
+        } catch (e) {
+          console.error("Kakao SDK init error:", e);
+        }
+      }
+    };
+
+    if (window.Kakao) {
+      initKakaoSDK();
+    } else {
+      const timer = setInterval(() => {
+        if (window.Kakao) {
+          initKakaoSDK();
+          clearInterval(timer);
+        }
+      }, 300);
+      return () => clearInterval(timer);
+    }
+  }, [kakaoAppKey]);
+
+  // Kakao Map 렌더링
   useEffect(() => {
     if (!kakaoAppKey) return;
 
@@ -67,8 +90,10 @@ export default function Location({
             if (!mapElementRef.current) return;
             const container = mapElementRef.current;
             const center = new window.kakao.maps.LatLng(lat, lng);
+            // 핀 + 오버레이가 시각적으로 가운데 오도록 지도 중심을 약간 남쪽으로
+            const mapCenter = new window.kakao.maps.LatLng(lat + 0.0003, lng);
             const options = {
-              center,
+              center: mapCenter,
               level: 3,
             };
 
@@ -89,16 +114,12 @@ export default function Location({
             const customOverlay = new window.kakao.maps.CustomOverlay({
               position: center,
               content: overlayContent,
-              yAnchor: 2.1,
+              yAnchor: 1.8,
             });
             customOverlay.setMap(map);
 
-            // 지도를 보이게 한 뒤 relayout으로 크기 재계산 & 중심 재설정
+            // 지도 로딩 완료 — 폴백 UI 제거
             setMapLoaded(true);
-            setTimeout(() => {
-              map.relayout();
-              map.setCenter(center);
-            }, 0);
           } catch (e) {
             console.error("Kakao Map init error:", e);
           }
@@ -122,17 +143,29 @@ export default function Location({
   const copyAddressToClipboard = () => {
     navigator.clipboard.writeText(address).then(() => {
       showToast("주소가 복사되었습니다.");
+    }).catch(() => {
+      showToast("주소 복사에 실패했습니다.");
     });
   };
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
-    setTimeout(() => setToastMessage(null), 2000);
+    setTimeout(() => setToastMessage(null), 2500);
   };
 
-  const naverMapWebUrl = `https://map.naver.com/v5/search/${encodeURIComponent(address)}`;
-  const kakaoNaviUrl = `https://map.kakao.com/link/to/${encodeURIComponent(venue)},${lat},${lng}`;
-  const tMapUrl = `https://apis.openapi.sk.com/tmap/app/routes?appKey=&name=${encodeURIComponent(venue)}`;
+  const handleKakaoNavi = () => {
+    openKakaoNavi({ venue, address, lat, lng });
+  };
+
+  const handleTMap = () => {
+    openTMap({ venue, address, lat, lng }, () => {
+      showToast("티맵은 모바일 앱에서 실행됩니다.");
+    });
+  };
+
+  const handleNaverMap = () => {
+    openNaverMap({ venue, address, lat, lng });
+  };
 
   return (
     <section className="section location" id="location" ref={sectionRef}>
@@ -149,58 +182,87 @@ export default function Location({
           <h3 className="section__title fade-in">Venue</h3>
           <p className="location__venue">{venue}</p>
           <p className="location__address" style={{ fontWeight: 500 }}>{hall}</p>
-          <p className="location__address">{address}</p>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "6px", flexWrap: "wrap", marginTop: "2px" }}>
+            <p className="location__address" style={{ margin: 0 }}>{address}</p>
+            <button
+              type="button"
+              onClick={copyAddressToClipboard}
+              className="location__copy-btn"
+              title="주소 복사"
+              style={{
+                background: "transparent",
+                border: "1px solid var(--color-silver)",
+                borderRadius: "4px",
+                padding: "2px 6px",
+                fontSize: "0.7rem",
+                color: "var(--color-gray)",
+                cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "3px",
+              }}
+            >
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+              복사
+            </button>
+          </div>
           {tel && (
             <p className="location__address" style={{ marginTop: "4px" }}>
-              TEL. {tel}
+              TEL. <a href={`tel:${tel}`} style={{ color: "inherit", textDecoration: "none" }}>{tel}</a>
             </p>
           )}
         </div>
 
         {/* 카카오 지도 영역 */}
-        <div className="location__map-container">
+        <div className="location__map-container" style={{ position: "relative" }}>
           <div
             ref={mapElementRef}
             className="location__map"
             style={{
               width: "100%",
-              height: "190px",
-              display: mapLoaded ? "block" : "none",
+              height: "180px",
             }}
           />
 
           {/* AppKey 미입력 또는 로딩 전 폴백 UI */}
           {!mapLoaded && (
-            <div className="location__map-fallback">
+            <div className="location__map-fallback" style={{ position: "absolute", inset: 0, zIndex: 1 }}>
               <p style={{ fontWeight: 500, fontSize: "0.9375rem", marginBottom: "4px" }}>🗺️ {venue}</p>
               <p style={{ fontSize: "0.8125rem", color: "#666", marginBottom: "12px" }}>{address}</p>
               <button
+                type="button"
                 className="location__nav-btn location__nav-btn--kakao"
-                onClick={() => window.open(kakaoNaviUrl, "_blank")}
+                onClick={handleKakaoNavi}
               >
-                카카오맵으로 오시는 길 ↗
+                카카오내비로 오시는 길 ↗
               </button>
             </div>
           )}
         </div>
 
-        {/* 길안내 앱 및 주소 복사 버튼 */}
+        {/* 길안내 앱 버튼 */}
         <div className="location__nav-buttons">
           <button
+            type="button"
             className="location__nav-btn"
-            onClick={() => window.open(naverMapWebUrl, "_blank")}
+            onClick={handleNaverMap}
           >
             네이버지도
           </button>
           <button
+            type="button"
             className="location__nav-btn"
-            onClick={() => window.open(kakaoNaviUrl, "_blank")}
+            onClick={handleKakaoNavi}
           >
             카카오내비
           </button>
           <button
+            type="button"
             className="location__nav-btn"
-            onClick={() => window.open(tMapUrl, "_blank")}
+            onClick={handleTMap}
           >
             T map
           </button>
@@ -228,3 +290,4 @@ export default function Location({
     </section>
   );
 }
+

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Serif_KR, Cormorant_Garamond, Gowun_Batang } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const notoSerifKr = Noto_Serif_KR({
@@ -54,8 +55,13 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${notoSerifKr.variable} ${cormorant.variable} ${gowun.variable}`}>
+        <Script
+          src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"
+          strategy="afterInteractive"
+        />
         {children}
       </body>
     </html>
   );
 }
+

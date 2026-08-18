@@ -1,21 +1,69 @@
 "use client";
 
+import { useState } from "react";
+
 export default function ShareButton() {
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 2500);
+  };
+
   const handleShare = () => {
-    // TODO: Kakao JS SDK 연동 후 Kakao.Share.sendDefault() 호출로 교체
-    // 현재는 Web Share API fallback
+    if (typeof window === "undefined") return;
+
+    const currentUrl = window.location.href;
+    const shareTitle = "건혁 ♥ 현 결혼합니다.";
+    const shareDesc = "두 사람의 새로운 시작을 함께 축하해 주세요.";
+    const imageUrl = `${window.location.origin}/images/cover_org.jpg`;
+
+    // 1. Kakao Talk Link Share
+    if (window.Kakao && window.Kakao.isInitialized && window.Kakao.isInitialized() && window.Kakao.Share) {
+      try {
+        window.Kakao.Share.sendDefault({
+          objectType: "feed",
+          content: {
+            title: shareTitle,
+            description: shareDesc,
+            imageUrl: imageUrl,
+            link: {
+              mobileWebUrl: currentUrl,
+              webUrl: currentUrl,
+            },
+          },
+          buttons: [
+            {
+              title: "모바일 청첩장 보기",
+              link: {
+                mobileWebUrl: currentUrl,
+                webUrl: currentUrl,
+              },
+            },
+          ],
+        });
+        return;
+      } catch (e) {
+        console.warn("Kakao Share error:", e);
+      }
+    }
+
+    // 2. Web Share API fallback (모바일 브라우저 공유창)
     if (navigator.share) {
       navigator.share({
-        title: "건혁 ♥ 현 결혼합니다.",
-        text: "두 사람의 새로운 시작을 함께 축하해 주세요.",
-        url: window.location.href,
+        title: shareTitle,
+        text: shareDesc,
+        url: currentUrl,
       }).catch(() => {});
-    } else {
-      // Clipboard fallback
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        alert("링크가 복사되었습니다!");
-      });
+      return;
     }
+
+    // 3. Clipboard fallback (링크 복사)
+    navigator.clipboard.writeText(currentUrl).then(() => {
+      showToast("청첩장 링크가 복사되었습니다.");
+    }).catch(() => {
+      showToast("링크 복사에 실패했습니다.");
+    });
   };
 
   return (
@@ -26,8 +74,14 @@ export default function ShareButton() {
           <polyline points="16 6 12 2 8 6" />
           <line x1="12" y1="2" x2="12" y2="15" />
         </svg>
-        공유하기
+        카카오톡으로 공유하기
       </button>
+
+      {/* 토스트 알림 */}
+      <div className={`toast ${toastMessage ? "toast--visible" : ""}`}>
+        {toastMessage}
+      </div>
     </div>
   );
 }
+
