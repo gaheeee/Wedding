@@ -126,6 +126,9 @@ export default function Gallery({ images }: GalleryProps) {
               alt={`웨딩 사진 ${lightboxIndex + 1}`}
               onClick={(e) => e.stopPropagation()}
             />
+            <span className="lightbox__counter" onClick={(e) => e.stopPropagation()}>
+              {lightboxIndex + 1} / {images.length}
+            </span>
             <button
               className="lightbox__nav lightbox__nav--next"
               onClick={(e) => { e.stopPropagation(); goToNext(); }}

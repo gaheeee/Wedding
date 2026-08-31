@@ -591,6 +591,23 @@ button {
   object-fit: contain;
 }
 
+.lightbox__counter {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.875rem;
+  font-family: var(--font-body);
+  letter-spacing: 0.15em;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+  z-index: 1005;
+  user-select: none;
+}
+
 .lightbox__nav {
   position: absolute;
   top: 0;

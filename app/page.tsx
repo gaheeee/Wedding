@@ -22,7 +22,7 @@ const WEDDING_CONFIG = {
   weddingDate: new Date(2026, 10, 7, 13, 0), // 2026년 11월 7일 오후 1시
 
   // 인사말
-  greetingMessage: "만나보니 잘 맞고,\n같이 있어보니 재밌고,\n더 오래 같이 있고 싶어졌습니다.\n\n그래서 결혼합니다.\n저희의 새로운 시작을 함께 축복해주세요🤍",
+  greetingMessage: "만나보니 잘 맞고,\n같이 있어보니 재밌고,\n더 오래 같이 있고 싶어졌습니다.\n\n그래서 결혼합니다.\n저희의 새로운 시작을 함께 축복해주세요♥",
 
   // 양가 부모님
   groomParents: { father: "박OO", mother: "김OO" },
@@ -55,24 +55,20 @@ const WEDDING_CONFIG = {
 
   // 갤러리 이미지 (public/images 폴더에 넣을 것)
   galleryImages: [
-    "/images/gallery-1.jpg",
-    "/images/gallery-2.jpg",
-    "/images/gallery-3.jpg",
+    "/images/gallery-12.jpg",
+    "/images/gallery-20.jpg",
+    "/images/gallery-14.jpg",
     // "/images/gallery-4.jpg",
     // "/images/gallery-5.jpg",
     // "/images/gallery-6.jpg",
     // "/images/gallery-7.jpg",
     // "/images/gallery-8.jpg",
-    "/images/gallery-15.jpg",
-    "/images/gallery-12.jpg",
     "/images/gallery-13.jpg",
-    "/images/gallery-14.jpg",
-
-    "/images/gallery-16.jpg",
-    "/images/gallery-17.jpg",
-    "/images/gallery-18.jpg",
+    "/images/gallery-21.jpg",
     "/images/gallery-19.jpg",
-    "/images/gallery-20.jpg",
+    "/images/gallery-16.jpg",
+
+    "/images/gallery-15.jpg",
   ],
 
   // 메인 커버 이미지
