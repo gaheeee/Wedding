@@ -63,6 +63,15 @@ const WEDDING_CONFIG = {
     "/images/gallery-6.jpg",
     "/images/gallery-7.jpg",
     "/images/gallery-8.jpg",
+    "/images/gallery-12.jpg",
+    "/images/gallery-13.jpg",
+    "/images/gallery-14.jpg",
+    "/images/gallery-15.jpg",
+    "/images/gallery-16.jpg",
+    "/images/gallery-17.jpg",
+    "/images/gallery-18.jpg",
+    "/images/gallery-19.jpg",
+    "/images/gallery-20.jpg",
   ],
 
   // 메인 커버 이미지
