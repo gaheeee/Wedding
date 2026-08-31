@@ -77,11 +77,9 @@ export default function AccountSection({ groomAccounts, brideAccounts }: Account
             <div className="account__info">
               <span className="account__bank">{acc.bank}</span>
               <br />
-              {acc.number}
+              <span className="account__number">{acc.number}</span>
               <br />
-              <span style={{ fontSize: "0.75rem", color: "var(--color-light-gray)" }}>
-                {acc.holder}
-              </span>
+              <span className="account__holder">{acc.holder}</span>
             </div>
             <button
               className="account__copy-btn"
