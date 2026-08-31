@@ -22,8 +22,7 @@ const WEDDING_CONFIG = {
   weddingDate: new Date(2026, 10, 7, 13, 0), // 2026년 11월 7일 오후 1시
 
   // 인사말
-  greetingMessage:
-    "두 사람이 사랑으로 만나\n진실과 이해로써 하나가 되려 합니다.\n\n저희의 작은 시작을\n귀한 걸음으로 축하해 주시면\n더없는 기쁨으로 간직하겠습니다.",
+  greetingMessage: "만나보니 잘 맞고,\n같이 있어보니 재밌고,\n더 오래 같이 있고 싶어졌습니다.\n\n그래서 결혼합니다.\n저희의 새로운 시작을 함께 축복해주세요🤍",
 
   // 양가 부모님
   groomParents: { father: "박OO", mother: "김OO" },
@@ -39,18 +38,19 @@ const WEDDING_CONFIG = {
     tel: "043-743-2500",
     traffic: {
       car: "영동역에서 차로 5분",
-      parking: "건물 내 지하주차장 이용 가능 (2시간 무료)",
+      parking: "건물 주차장 이용 가능",
     },
   },
 
   // 계좌 정보
   groomAccounts: [
-    { bank: "국민은행", number: "123-456-789012", holder: "박건혁" },
-    { bank: "신한은행", number: "123-456-789012", holder: "김OO (모)" },
+    { bank: "국민은행", number: "227502-04-315370", holder: "박건혁" },
+    { bank: "농협은행", number: "121020-52-270883", holder: "오경미(혼주)" },
   ],
   brideAccounts: [
-    { bank: "우리은행", number: "123-456-789012", holder: "양현" },
-    { bank: "하나은행", number: "123-456-789012", holder: "김연옥 (모)" },
+    { bank: "농협은행", number: "302-0842-1872-91", holder: "양현" },
+    { bank: "농협은행", number: "352-0195-7086-73", holder: "양희승(혼주)" },
+    { bank: "농협은행", number: "319-02-111325", holder: "김연옥(혼주)" },
   ],
 
   // 갤러리 이미지 (public/images 폴더에 넣을 것)
@@ -58,15 +58,16 @@ const WEDDING_CONFIG = {
     "/images/gallery-1.jpg",
     "/images/gallery-2.jpg",
     "/images/gallery-3.jpg",
-    "/images/gallery-4.jpg",
-    "/images/gallery-5.jpg",
-    "/images/gallery-6.jpg",
-    "/images/gallery-7.jpg",
-    "/images/gallery-8.jpg",
+    // "/images/gallery-4.jpg",
+    // "/images/gallery-5.jpg",
+    // "/images/gallery-6.jpg",
+    // "/images/gallery-7.jpg",
+    // "/images/gallery-8.jpg",
+    "/images/gallery-15.jpg",
     "/images/gallery-12.jpg",
     "/images/gallery-13.jpg",
     "/images/gallery-14.jpg",
-    "/images/gallery-15.jpg",
+
     "/images/gallery-16.jpg",
     "/images/gallery-17.jpg",
     "/images/gallery-18.jpg",
