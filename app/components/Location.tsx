@@ -181,7 +181,7 @@ export default function Location({
         <div className="location__info">
           <h3 className="section__title fade-in">Venue</h3>
           <p className="location__venue">{venue}</p>
-          <p className="location__address" style={{ fontWeight: 500 }}>{hall}</p>
+          {/* <p className="location__address" style={{ fontWeight: 500 }}>{hall}</p> */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "6px", flexWrap: "wrap", marginTop: "2px" }}>
             <p className="location__address" style={{ margin: 0 }}>{address}</p>
             <button

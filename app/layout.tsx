@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/cover_org.jpg",
+        url: "/images/new_cover.jpg",
         alt: "건혁 ♥ 현 결혼합니다.",
       },
     ],
