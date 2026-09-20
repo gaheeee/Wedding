@@ -55,20 +55,15 @@ const WEDDING_CONFIG = {
 
   // 갤러리 이미지 (public/images 폴더에 넣을 것)
   galleryImages: [
-    "/images/gallery-12.jpg",
-    "/images/gallery-20.jpg",
-    "/images/gallery-14.jpg",
-    // "/images/gallery-4.jpg",
-    // "/images/gallery-5.jpg",
-    // "/images/gallery-6.jpg",
-    // "/images/gallery-7.jpg",
-    // "/images/gallery-8.jpg",
-    "/images/gallery-13.jpg",
-    "/images/gallery-21.jpg",
-    "/images/gallery-19.jpg",
-    "/images/gallery-16.jpg",
-
-    "/images/gallery-15.jpg",
+    "/images/img1.jpeg",
+    "/images/img2.jpeg",
+    "/images/img3.jpeg",
+    "/images/img4.jpeg",
+    "/images/img5.jpeg",
+    "/images/img6.jpeg",
+    "/images/img7.jpeg",
+    "/images/img8.jpeg",
+    "/images/img9.jpeg",
   ],
 
   // 메인 커버 이미지

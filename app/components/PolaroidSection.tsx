@@ -9,10 +9,9 @@ interface PolaroidSectionProps {
 }
 
 const DEFAULT_POLAROID_IMAGES = [
-  "/images/gallery-10.jpg",
-  "/images/gallery-24.jpg",
-  "/images/gallery-11.jpg",
-  "/images/gallery-25.jpg",
+  "/images/pola1.jpeg",
+  "/images/pola2.jpeg",
+  "/images/pola3.jpeg"
 ];
 
 export default function PolaroidSection({
